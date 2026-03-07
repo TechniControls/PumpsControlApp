@@ -1,0 +1,68 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <!-- ComboBox Style -->
+    <Style Selector="ComboBox.comboSettings">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Width" Value="270" />
+        <Setter Property="PlaceholderText" Value="Select CPU" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+    <!-- TextBox Style -->
+    <Style Selector="TextBox.textBoxSettings">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+        <Setter Property="Width" Value="270" />
+        <Setter Property="Watermark" Value="PLC IP Address" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+    </Style>
+    <!-- TextBlock Style -->
+    <Style Selector="TextBlock.textBlockSettings">
+        <Setter Property="FontSize" Value="14" />
+        <Setter Property="FontWeight" Value="SemiBold" />
+        <Setter Property="Foreground" Value="#2C3E50" />
+    </Style>
+    <!-- NumericUpDown Style -->
+    <Style Selector="NumericUpDown.numericSettings">
+        <Setter Property="Width" Value="270" />
+        <Setter Property="Margin" Value="0,0,0,10" />
+        <Setter Property="FormatString" Value="0" />
+        <Setter Property="Minimum" Value="0" />
+        <Setter Property="Maximum" Value="7" />
+        <Setter Property="ParsingNumberStyle" Value="Integer" />
+        <Setter Property="Increment" Value="1" />
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="HorizontalContentAlignment" Value="Center" />
+    </Style>
+    <!-- StackPanel Style -->
+    <Style Selector="StackPanel.stackHorizontal">
+        <Setter Property="Margin" Value="0,10,0,0" />
+        <Setter Property="Orientation" Value="Horizontal" />
+    </Style>
+    <!-- StackPanel Side Bar Style -->
+    <Style Selector="StackPanel.sideBarVertical">
+        <Setter Property="Spacing" Value="5" />
+        <Setter Property="Margin" Value="5" />
+        <Setter Property="Orientation" Value="Vertical" />
+    </Style>
+    <!-- Logo Image Style -->
+    <Style Selector="Image.logoImage">
+        <Setter Property="Width" Value="180" />
+        <Setter Property="Height" Value="55" />
+        <Setter Property="Stretch" Value="Fill" />
+        <Setter Property="VerticalAlignment" Value="Bottom" />
+        <Setter Property="HorizontalAlignment" Value="Stretch" />
+        <Setter Property="Margin" Value="0,370,0,0" />
+    </Style>
+    <!-- ListBoxItem Style -->
+    <Style Selector="PathIcon.pathNav">
+        <Setter Property="Margin" Value="0,0,15,0" />
+    </Style>
+</Styles>

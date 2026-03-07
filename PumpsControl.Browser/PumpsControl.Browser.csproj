@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WebAssembly">
+  <PropertyGroup>
+    <TargetFramework>net10.0-browser</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia.Browser" />
+    <PackageReference Include="MessageBox.Avalonia" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
+    <PackageReference Include="S7netplus" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\PumpsControl\PumpsControl.csproj" />
+  </ItemGroup>
+</Project>

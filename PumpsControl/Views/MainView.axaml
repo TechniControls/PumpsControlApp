@@ -1,0 +1,73 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:PumpsControl.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PumpsControl.Views.MainView"
+             x:DataType="vm:MainViewModel">
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:MainViewModel />
+    </Design.DataContext>
+
+    <Grid>
+        <!-- <Grid.RowDefinitions>Auto,*</Grid.RowDefinitions> -->
+        <SplitView IsPaneOpen="{Binding EnableSplitView}"
+                   PaneBackground="#F3F4F6"
+                   OpenPaneLength="220"
+                   CompactPaneLength="48"
+                   DisplayMode="CompactInline">
+            <SplitView.Pane>
+                <StackPanel Classes="sideBarVertical">
+                    <Button Command="{Binding ToggleSplitViewCommand}" HorizontalAlignment="Right"
+                            VerticalAlignment="Top">
+                        <PathIcon Data="{StaticResource LinesMenu}"
+                                  Foreground="White" />
+                    </Button>
+                    <!-- Buttons for navigation -->
+                    <!-- Connection View -->
+                    <Button Classes="nav"
+                            Command="{Binding NavigateToConnectionSettingsCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <PathIcon Classes="pathNav"
+                                      Data="{StaticResource PlugConnection}" />
+                            <TextBlock Text="Connection" />
+                        </StackPanel>
+                    </Button>
+                    <!-- Control View -->
+                    <Button Classes="nav"
+                            Command="{Binding NavigateToControlCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <PathIcon Classes="pathNav"
+                                      Data="{StaticResource Control}" />
+                            <TextBlock Text="Control" />
+                        </StackPanel>
+                    </Button>
+                    <!-- Data View -->
+                    <Button Classes="nav">
+                        <StackPanel Orientation="Horizontal">
+                            <PathIcon Classes="pathNav"
+                                      Data="{StaticResource DataArea}" />
+                            <TextBlock Text="Data Visualization" />
+                        </StackPanel>
+                    </Button>
+
+                    <Image Classes="logoImage"
+                           Source="/Assets/technicontrols-logo.png"
+                           RenderOptions.BitmapInterpolationMode="HighQuality"
+                           IsVisible="{Binding EnableSplitView}" />
+
+                </StackPanel>
+            </SplitView.Pane>
+            <SplitView.Content>
+                <Border>
+                    <ContentControl Content="{Binding NavigationService.CurrentView}" />
+                </Border>
+            </SplitView.Content>
+        </SplitView>
+
+
+    </Grid>
+</UserControl>

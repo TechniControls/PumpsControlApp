@@ -1,0 +1,51 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:PumpsControl.ViewModels"
+             x:DataType="vm:ConnectionViewModel"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="PumpsControl.Views.ConnectionView">
+
+    <Design.DataContext>
+        <!-- This only sets the DataContext for the previewer in an IDE,
+         to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
+        <vm:ConnectionViewModel />
+    </Design.DataContext>
+
+    <Grid>
+        <Grid>
+            <StackPanel Orientation="Vertical"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center">
+                <!-- CPU Type -->
+                <TextBlock Classes="textBlockSettings"
+                           Text="Select CPU Type"/>
+                <ComboBox Classes="comboSettings"
+                          ItemsSource="{Binding CpuType}" />
+                <!-- PLC IP Address -->
+                <TextBlock Classes="textBlockSettings"
+                           Text="IP Address"/>
+                <TextBox Classes="textBoxSettings"/>
+                <!-- PLC Rack -->
+                <TextBlock Classes="textBlockSettings"
+                           Text="PLC Rack"/>
+                <NumericUpDown Classes="numericSettings"/>
+                <!-- PLC Slot -->
+                <TextBlock Classes="textBlockSettings"
+                           Text="PLC Slot"/>
+                <NumericUpDown Classes="numericSettings"/>
+                <!-- Connect PLC Button -->
+                <StackPanel Classes="stackHorizontal">
+                    <Button Classes="secondaryButton"
+                            Margin="0,0,6,0"
+                            HorizontalAlignment="Left"
+                            Content="Connect PLC"/>
+                    <Button Classes="secondaryButton"
+                            HorizontalAlignment="Right"
+                            Content="Disconnect PLC"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>
