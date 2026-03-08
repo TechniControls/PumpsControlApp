@@ -61,8 +61,21 @@
         <Setter Property="HorizontalAlignment" Value="Stretch" />
         <Setter Property="Margin" Value="0,370,0,0" />
     </Style>
-    <!-- ListBoxItem Style -->
+    <!-- PathIcon Navigation Style -->
     <Style Selector="PathIcon.pathNav">
         <Setter Property="Margin" Value="0,0,15,0" />
+    </Style>
+    <!-- Ellipse Status Style -->
+    <Style Selector="Ellipse.ellipse">
+        <Setter Property="Width" Value="14"/>
+        <Setter Property="Height" Value="14"/>
+        <Setter Property="Margin" Value="50,0,10,0" />
+    </Style>
+    <!-- Textblock Status Style -->
+    <Style Selector="TextBlock.textblockStatus">
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
+        <Setter Property="Foreground" Value="#2C3E50" />
+        <Setter Property="Margin" Value="0,0,0,0" />
     </Style>
 </Styles>

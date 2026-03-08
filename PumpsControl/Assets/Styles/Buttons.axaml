@@ -13,6 +13,8 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="FontWeight" Value="SemiBold"/>
     </Style>
     
     <!-- Primary Button -->
@@ -22,6 +24,7 @@
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Padding" Value="16,10" />
         <Setter Property="CornerRadius" Value="6" />
+        <Setter Property="Margin" Value="0,0,10,0" />
     </Style>
     
     <!-- Secondary Button -->

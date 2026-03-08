@@ -10,4 +10,5 @@
         Icon="/Assets/avalonia-logo.ico"
         Title="PumpsControl">
         <views:MainView />
+        
 </Window>

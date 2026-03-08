@@ -32,4 +32,8 @@
     <AvaloniaResource Include="Assets\Styles\Buttons.axaml" />
     <AvaloniaXaml Remove="Assets\Styles\Controls.axaml" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Assets\Images\" />
+  </ItemGroup>
 </Project>

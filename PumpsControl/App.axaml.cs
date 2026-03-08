@@ -1,3 +1,4 @@
+using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
@@ -6,6 +7,7 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using Microsoft.Extensions.DependencyInjection;
 using PumpsControl.Services;
+using PumpsControl.Store;
 using PumpsControl.ViewModels;
 using PumpsControl.Views;
 
@@ -13,6 +15,8 @@ namespace PumpsControl;
 
 public partial class App : Application
 {
+    
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -21,18 +25,22 @@ public partial class App : Application
     public override void OnFrameworkInitializationCompleted()
     {
         var collection = new ServiceCollection();
-        
+
         // Services
         collection.AddSingleton<INavigationService, NavigationService>();
-        
+        collection.AddSingleton<ConnectionService>();
+
+        // Stores
+        collection.AddSingleton<ConnectionStore>();
+
         // ViewModels
         collection.AddSingleton<MainViewModel>();
         collection.AddTransient<ConnectionViewModel>();
         collection.AddTransient<ControlViewModel>();
-        
+
         var serviceProvider = collection.BuildServiceProvider();
         var mainViewModel = serviceProvider.GetRequiredService<MainViewModel>();
-        
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 

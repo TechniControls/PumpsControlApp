@@ -10,7 +10,7 @@
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
          to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
-        <vm:ConnectionViewModel />
+        <vm:DesignPreviewViewModel/>
     </Design.DataContext>
 
     <Grid>
@@ -18,32 +18,49 @@
             <StackPanel Orientation="Vertical"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
+                <!-- Connection Status -->
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,10">
+                    <Ellipse Classes="ellipse"
+                             Fill="{Binding ConnectionStatusColor}" />
+                    <TextBlock Classes="textblockStatus">
+                        <Run Text="Status:" />
+                        <Run
+                            Text="{Binding ConnectionStatus}" />
+                    </TextBlock>
+                </StackPanel>
+
                 <!-- CPU Type -->
                 <TextBlock Classes="textBlockSettings"
-                           Text="Select CPU Type"/>
+                           Text="Select CPU Type" />
                 <ComboBox Classes="comboSettings"
-                          ItemsSource="{Binding CpuType}" />
+                          ItemsSource="{Binding CpuType}"
+                          SelectedItem="{Binding SelectedCpu}" />
                 <!-- PLC IP Address -->
                 <TextBlock Classes="textBlockSettings"
-                           Text="IP Address"/>
-                <TextBox Classes="textBoxSettings"/>
+                           Text="IP Address" />
+                <TextBox Classes="textBoxSettings"
+                         Text="{Binding IpAddress}" />
                 <!-- PLC Rack -->
                 <TextBlock Classes="textBlockSettings"
-                           Text="PLC Rack"/>
-                <NumericUpDown Classes="numericSettings"/>
+                           Text="PLC Rack" />
+                <NumericUpDown Classes="numericSettings"
+                               Value="{Binding PlcRack}" />
                 <!-- PLC Slot -->
                 <TextBlock Classes="textBlockSettings"
-                           Text="PLC Slot"/>
-                <NumericUpDown Classes="numericSettings"/>
+                           Text="PLC Slot" />
+                <NumericUpDown Classes="numericSettings"
+                               Value="{Binding PlcSlot}" />
                 <!-- Connect PLC Button -->
                 <StackPanel Classes="stackHorizontal">
                     <Button Classes="secondaryButton"
                             Margin="0,0,6,0"
                             HorizontalAlignment="Left"
-                            Content="Connect PLC"/>
+                            Content="Connect PLC"
+                            Command="{Binding AsyncConnectPlcCommand}" />
                     <Button Classes="secondaryButton"
                             HorizontalAlignment="Right"
-                            Content="Disconnect PLC"/>
+                            Content="Disconnect PLC"
+                            Command="{Binding DisconnectPlcCommand}"/>
                 </StackPanel>
             </StackPanel>
         </Grid>
