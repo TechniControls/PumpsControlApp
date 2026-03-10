@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Diagnostics.Contracts;
+using System.Globalization;
 using System.Threading.Tasks;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -16,35 +18,33 @@ public partial class ControlViewModel : ViewModelBase
 
     private readonly ConnectionStore _connectionStore;
     private readonly ConnectionService _connectionService;
+    private readonly PlcDataStore _plcDataStore;
 
     #endregion
 
     public ControlViewModel(
         ConnectionStore connectionStore,
-        ConnectionService connectionService)
+        ConnectionService connectionService,
+        PlcDataStore plcDataStore)
     {
         _connectionStore = connectionStore;
         _connectionService = connectionService;
+        _plcDataStore = plcDataStore;
         FrequencyValue = string.Empty;
         
-        _connectionStore.PropertyChanged += OnConnectionStoreChanged;
+        _plcDataStore.PropertyChanged += OnPlcDataStoreChanged;
     }
 
-    [ObservableProperty] private string _frequencyValue;
-
-    partial void OnFrequencyValueChanged(string value)
-    {
-        Debug.WriteLine(value);
-    }
-
-    public float CurrentFrequencyValue => _connectionService.ReadData;
+    [ObservableProperty]
+    private string _frequencyValue;
+    public string CurrentFrequencyValue => Convert.ToString(_plcDataStore.CurrentFrequency, CultureInfo.CurrentCulture);
 
     private bool IsConnected => _connectionStore.IsConnected;
     private bool CanControlPump() => IsConnected;
 
-    private void OnConnectionStoreChanged(object? sender, PropertyChangedEventArgs eventArgs)
+    private void OnPlcDataStoreChanged(object? sender, PropertyChangedEventArgs eventArgs)
     {
-        if (eventArgs.PropertyName == nameof(IsConnected))
+        if (eventArgs.PropertyName == nameof(_plcDataStore.CurrentFrequency))
         {
             OnPropertyChanged(nameof(CurrentFrequencyValue));
         }

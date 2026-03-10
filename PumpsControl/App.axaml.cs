@@ -32,6 +32,7 @@ public partial class App : Application
 
         // Stores
         collection.AddSingleton<ConnectionStore>();
+        collection.AddSingleton<PlcDataStore>();
 
         // ViewModels
         collection.AddSingleton<MainViewModel>();

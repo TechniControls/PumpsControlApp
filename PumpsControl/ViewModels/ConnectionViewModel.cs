@@ -135,6 +135,7 @@ public partial class ConnectionViewModel
     private bool CanDisconnect() => IsConnected;
 
     // Commands
+    // Connect Plc Command
     [RelayCommand(CanExecute = nameof(CanConnect))]
     private async Task AsyncConnectPlc()
     {
@@ -152,10 +153,12 @@ public partial class ConnectionViewModel
             await messageBox.ShowAsync();
             
             // Execute read data form plc
+            // If connection is successfully, start read data
             await _connectionService.ReadDataControlPump("DB1.DBD2");
         }
     }
 
+    // Disconnect Plc Command
     [RelayCommand(CanExecute = nameof(CanDisconnect))]
     private async Task DisconnectPlc()
     {

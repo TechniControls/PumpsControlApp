@@ -1,7 +1,10 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
+using Android.Telecom;
 using Avalonia;
 using Avalonia.Android;
+using PumpsControl.Store;
 
 namespace PumpsControl.Android;
 

@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading;
 using System.Threading.Tasks;
+using Avalonia.Threading;
 using CommunityToolkit.Mvvm.ComponentModel;
 using MsBox.Avalonia;
 using PumpsControl.Store;
@@ -11,9 +12,12 @@ using S7.Net;
 
 namespace PumpsControl.Services;
 
-public partial class ConnectionService(ConnectionStore connectionStore) : ViewModelBase
+public partial class ConnectionService(
+    ConnectionStore connectionStore,
+    PlcDataStore plcDataStore) : ViewModelBase
 {
     private readonly ConnectionStore _connectionStore = connectionStore;
+    private readonly PlcDataStore _plcDataStore = plcDataStore;
 
     #region PLC Access
 
@@ -21,9 +25,7 @@ public partial class ConnectionService(ConnectionStore connectionStore) : ViewMo
     private CancellationTokenSource? _cancellationToken;
 
     #endregion
-
-    [ObservableProperty] private float _readData;
-
+    
     #region Methods for Connect and Disconnect PLC
 
     public async Task<bool> AsyncConnectPlc(string cpuType, string ipAddress, Int16 plcRack, Int16 plcSlot)
@@ -152,8 +154,14 @@ public partial class ConnectionService(ConnectionStore connectionStore) : ViewMo
                     try
                     {
                         var readValue = await _plcStation.ReadAsync(DataType.DataBlock,1,2, VarType.Real, 1);
-                        ReadData = Convert.ToSingle(readValue);
-                        Debug.WriteLine($"Read Data: {ReadData}");
+                        float floatValue = Convert.ToSingle(readValue);
+
+                        Dispatcher.UIThread.Post(() =>
+                        {
+                            _plcDataStore.CurrentFrequency = floatValue;
+
+                        });
+                        Debug.WriteLine($"Read Data: {_plcDataStore.CurrentFrequency}");
                     }
                     catch (Exception e)
                     {

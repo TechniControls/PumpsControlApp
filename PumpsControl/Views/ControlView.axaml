@@ -41,7 +41,10 @@
                 <TextBox Watermark="e.g 50.5"
                          HorizontalContentAlignment="Center"
                          Text="{Binding FrequencyValue}"/>
-                <TextBlock Text="{Binding CurrentFrequencyValue}"/>
+                <TextBlock >
+                    <Run Text="{Binding CurrentFrequencyValue}"/>
+                    <Run Text="Hz"/>
+                </TextBlock>
                 <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
                     <Button Classes="primaryButton"
                             Content="Run"
