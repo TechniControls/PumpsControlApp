@@ -6,12 +6,18 @@ using PumpsControl.Services;
 
 namespace PumpsControl.ViewModels;
 
-public partial class MainViewModel(INavigationService navigationService) : ViewModelBase
+public partial class MainViewModel : ViewModelBase
 {
+    public MainViewModel(INavigationService navigationService)
+    {
+        _navigationService = navigationService;
+        _navigationService.NavigateTo<ConnectionViewModel>();
+    }
+
     [ObservableProperty] private bool _enableSplitView;
 
 
-    [ObservableProperty] private INavigationService _navigationService = navigationService;
+    [ObservableProperty] private INavigationService _navigationService;
 
     [RelayCommand]
     private void NavigateToConnectionSettings()

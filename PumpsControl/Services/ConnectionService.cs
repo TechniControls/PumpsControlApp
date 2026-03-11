@@ -139,7 +139,7 @@ public partial class ConnectionService(
 
     #region Read Data
 
-    public async Task ReadDataControlPump(string address)
+    public Task ReadDataControlPump(string address)
     {
         if (_plcStation is { IsConnected: true } && _plcStation != null)
         {
@@ -172,6 +172,7 @@ public partial class ConnectionService(
                 }
             }, token);
         }
+        return Task.CompletedTask;
     }
 
     #endregion
