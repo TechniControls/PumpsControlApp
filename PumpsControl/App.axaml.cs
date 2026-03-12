@@ -38,6 +38,7 @@ public partial class App : Application
         collection.AddSingleton<MainViewModel>();
         collection.AddTransient<ConnectionViewModel>();
         collection.AddTransient<ControlViewModel>();
+        collection.AddTransient<DataVisualizationViewModel>();
 
         var serviceProvider = collection.BuildServiceProvider();
         var mainViewModel = serviceProvider.GetRequiredService<MainViewModel>();

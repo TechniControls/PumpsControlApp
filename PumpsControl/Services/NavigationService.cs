@@ -5,16 +5,11 @@ using PumpsControl.ViewModels;
 
 namespace PumpsControl.Services;
 
-public partial class NavigationService : ViewModelBase, INavigationService
+public partial class NavigationService(IServiceProvider serviceProvider) : ViewModelBase, INavigationService
 {
-    private readonly IServiceProvider _serviceProvider;
-    
-    [ObservableProperty]
-    private ViewModelBase? _currentView;
-    public NavigationService(IServiceProvider serviceProvider)
-    {
-        _serviceProvider = serviceProvider;
-    }
+    private readonly IServiceProvider _serviceProvider = serviceProvider;
+
+    [ObservableProperty] private ViewModelBase? _currentView;
 
     public void NavigateTo<T>() where T : ViewModelBase
     {

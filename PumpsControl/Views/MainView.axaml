@@ -46,7 +46,8 @@
                         </StackPanel>
                     </Button>
                     <!-- Data View -->
-                    <Button Classes="nav">
+                    <Button Classes="nav"
+                            Command="{Binding NavigateToDataVisualizationCommand}">
                         <StackPanel Orientation="Horizontal">
                             <PathIcon Classes="pathNav"
                                       Data="{StaticResource DataArea}" />

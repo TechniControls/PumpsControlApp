@@ -42,4 +42,10 @@ public partial class MainViewModel : ViewModelBase
     {
         EnableSplitView = !EnableSplitView;
     }
+
+    [RelayCommand]
+    private void NavigateToDataVisualization()
+    {
+        NavigationService.NavigateTo<DataVisualizationViewModel>();
+    }
 }

@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:PumpsControl.ViewModels"
              x:DataType="vm:ControlViewModel"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             mc:Ignorable="d" d:DesignWidth="950" d:DesignHeight="450"
              x:Class="PumpsControl.Views.ControlView">
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -17,7 +17,7 @@
                 <Grid.ColumnDefinitions>Auto,Auto,Auto</Grid.ColumnDefinitions>
                 <!-- Control Pump P001 -->
                 <HeaderedContentControl Header="Pump P001" Classes="groupBox" Width="250" VerticalAlignment="Center"
-                                        Margin="40,0,0,0">
+                                        Margin="60,0,0,0">
                     <StackPanel Orientation="Vertical">
                         <Image Source="../Assets/Images/technology.png" Width="100" StretchDirection="Both" />
                         <!-- Motor Status -->

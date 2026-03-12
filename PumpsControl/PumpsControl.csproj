@@ -25,6 +25,7 @@
     <PackageReference Include="MessageBox.Avalonia" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" />
     <PackageReference Include="S7netplus" />
+    <PackageReference Include="ScottPlot.Avalonia" />
   </ItemGroup>
 
   <ItemGroup>
